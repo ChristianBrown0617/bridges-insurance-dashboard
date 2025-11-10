@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Copper Shores Bridges · Insurance Basics Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Copper Shores Bridges: simple, honest insurance guidance using national averages to help families protect themselves without overpaying." />
+  <style>
+    :root {
+      --cs-gold: #b48324;
+      --cs-blue: #0085bb;
+      --cs-dark: #333132;
+      --bg-soft: #f5f7fb;
+      --bg-white: #ffffff;
+      --text-main: #111827;
+      --text-soft: #4b5563;
+      --radius-xl: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 26px rgba(15, 23, 42, 0.12);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, -apple-system,
+                   "Segoe UI", sans-serif;
+      --transition-fast: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-soft);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-text span:first-child {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cs-blue);
+      font-weight: 600;
+    }
+
+    .brand-text span:last-child {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--cs-dark);
+    }
+
+    .tagline-pill {
+      padding: 7px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0, 133, 187, 0.25);
+      font-size: 11px;
+      color: var(--cs-dark);
+      background: rgba(255, 255, 255, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(15,23,42,0.06);
+      white-space: nowrap;
+    }
+
+    .tagline-pill span.icon {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--cs-blue);
+      display: inline-block;
+    }
+
+    .hero {
+      background: var(--bg-white);
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(240px, 2.3fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--cs-dark);
+    }
+
+    .hero p {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      max-width: 560px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--cs-dark);
+    }
+
+    .hero-points span {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      background: #eef6fb;
+      border: 1px solid rgba(0,133,187,0.18);
+    }
+
+    .hero-side {
+      padding: 10px 10px 9px;
+      border-radius: var(--radius-md);
+      background: #f9fafb;
+      border: 1px solid rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .hero-side h2 {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cs-blue);
+    }
+
+    .hero-side-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .hero-side-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+    }
+
+    .hero-side-value {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--cs-dark);
+    }
+
+    .hero-note {
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    /* Key stats */
+    .stats-strip {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-xl);
+      background: #eef6fb;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .stats-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cs-blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stats-title span.icon {
+      width: 16px;
+      height: 16px;
+      background: var(--cs-blue);
+      border-radius: 4px;
+    }
+
+    .stat-item {
+      font-size: 11px;
+      color: var(--cs-dark);
+    }
+
+    .stat-item strong {
+      font-size: 18px;
+      color: var(--cs-blue);
+      display: block;
+    }
+
+    /* Cards for insurance types */
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--cs-blue);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--cs-dark);
+      margin-bottom: 10px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background: var(--bg-white);
+      border-radius: var(--radius-xl);
+      padding: 11px 11px 10px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--text-soft);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.16);
+      border-color: rgba(0,133,187,0.35);
+    }
+
+    .card h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cs-dark);
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: var(--radius-pill);
+      background: #eef6fb;
+      color: var(--cs-blue);
+      font-size: 9px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    ul.tight {
+      padding-left: 14px;
+      display: grid;
+      gap: 2px;
+    }
+
+    /* Calculator */
+    .calculator {
+      background: var(--bg-white);
+      border-radius: var(--radius-xl);
+      padding: 16px 14px 14px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+      margin-bottom: 16px;
+    }
+
+    .calculator h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--cs-dark);
+      margin-bottom: 4px;
+    }
+
+    .calculator p {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-end;
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 10px;
+      color: var(--cs-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    input[type="number"] {
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 13px;
+      width: 160px;
+    }
+
+    button {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: var(--cs-blue);
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,133,187,0.35);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(0,133,187,0.42);
+      background: #0073a3;
+    }
+
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .box {
+      padding: 8px 8px 7px;
+      border-radius: var(--radius-md);
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .box strong {
+      font-size: 16px;
+    }
+
+    .box-premium {
+      background: #e6f2fb;
+      color: var(--cs-blue);
+    }
+
+    .box-youpay {
+      background: #ffe9e7;
+      color: #b91c1c;
+    }
+
+    .box-youpay strong {
+      color: #b91c1c;
+    }
+
+    .box-insurance {
+      background: #e4f8ec;
+      color: #15803d;
+    }
+
+    .box-insurance strong {
+      color: #15803d;
+    }
+
+    .box-total {
+      background: #fff7e0;
+      color: #92400e;
+    }
+
+    .box-total strong {
+      color: #b45309;
+    }
+
+    .calc-note {
+      margin-top: 6px;
+      font-size: 9px;
+      color: #6b7280;
+    }
+
+    /* Footer / links */
+    .links {
+      font-size: 10px;
+      color: var(--text-soft);
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .links a {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: var(--cs-blue);
+      background: var(--bg-white);
+      transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .links a:hover {
+      background: var(--cs-blue);
+      color: #ffffff;
+      border-color: var(--cs-blue);
+      box-shadow: 0 6px 16px rgba(0,133,187,0.3);
+    }
+
+    footer {
+      margin-top: 14px;
+      font-size: 9px;
+      color: #9ca3af;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    footer a {
+      color: var(--cs-blue);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .stats-strip {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+      .calc-results {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 18px 10px 26px;
+      }
+      .stats-strip,
+      .card-grid,
+      .calc-results {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">
+          <!-- Update src if you use a different file name/path -->
+          <img src="logo.png" alt="Copper Shores Bridges logo">
+        </div>
+        <div class="brand-text">
+          <span>Copper Shores Bridges</span>
+          <span>Insurance Basics Dashboard</span>
+        </div>
+      </div>
+      <div class="tagline-pill">
+        <span class="icon"></span>
+        <span>Protect your family • Don’t overpay • For local clients & partners</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Insurance basics in plain language.</h1>
+        <p>
+          This dashboard turns confusing insurance jargon into clear next steps.
+          Use it with Bridges clients to talk through the most important coverages
+          and what “good enough” protection looks like on a tight budget.
+        </p>
+        <div class="hero-points">
+          <span>Focus on essentials: health, auto, home/renters, life, disability.</span>
+          <span>Use national averages to start the conversation.</span>
+          <span>Adjust for each client’s situation, not sales targets.</span>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <h2>How to use this page</h2>
+        <div class="hero-side-row">
+          <div>
+            <div class="hero-side-label">Step 1</div>
+            <div class="hero-side-value">Pick their top risks.</div>
+          </div>
+          <div>
+            <div class="hero-side-label">Step 2</div>
+            <div class="hero-side-value">Explain trade-offs in cost.</div>
+          </div>
+        </div>
+        <p class="hero-note">
+          This is an educational tool, not a sales sheet. Numbers are approximate
+          U.S. averages and may change by state, income, health, driving record,
+          and company. Always confirm details with a licensed agent.
+        </p>
+      </aside>
+    </section>
+
+    <!-- Key Statistics -->
+    <section class="stats-strip">
+      <div class="stats-title">
+        <span class="icon"></span>
+        <span>Key Statistics (U.S., rounded)</span>
+      </div>
+      <div class="stat-item">
+        <strong>≈ 2 in 3</strong>
+        bankruptcy filers in one major study said medical issues or bills were a contributing factor.
+      </div>
+      <div class="stat-item">
+        <strong>≈ 1 in 4</strong>
+        insured workers are projected to face a disability before retirement.
+      </div>
+      <div class="stat-item">
+        <strong>≈ 1 in 2</strong>
+        U.S. adults have life insurance; many are underinsured or rely only on small work policies.
+      </div>
+      <div class="stat-item">
+        <strong>≈ 45%</strong>
+        of renters have no renters insurance, leaving belongings and liability unprotected.
+      </div>
+    </section>
+
+    <!-- Core coverages -->
+    <div class="section-label">Coverage overview</div>
+    <div class="section-title">What to talk about first</div>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>Health Insurance</h3>
+        <div class="pill-tag">Highest priority</div>
+        <ul class="tight">
+          <li>Shields from medical bills that often lead to bankruptcy.</li>
+          <li>Look for: in-network care, out-of-pocket max, subsidies/Medicaid.</li>
+          <li>Okay to choose a higher deductible if it’s all you can afford.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Renters / Homeowners</h3>
+        <div class="pill-tag">Shelter & belongings</div>
+        <ul class="tight">
+          <li>Renters: covers your stuff + liability (often $10–$20/mo).</li>
+          <li>Homeowners: protects the house + liability; required by lenders.</li>
+          <li>Remind: landlord’s policy does <strong>not</strong> cover tenants’ belongings.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Auto Insurance</h3>
+        <div class="pill-tag">Legally required (if you drive)</div>
+        <ul class="tight">
+          <li>Start above state minimum liability if possible.</li>
+          <li>Raise deductibles & bundle to lower cost.</li>
+          <li>Driving without insurance = huge legal & financial risk.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Life Insurance</h3>
+        <div class="pill-tag">If someone relies on your income</div>
+        <ul class="tight">
+          <li>Term life: most coverage for lowest cost.</li>
+          <li>Rule of thumb: ~5–10× annual income (adjust to family needs).</li>
+          <li>Work policies alone often aren’t enough.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Disability Insurance</h3>
+        <div class="pill-tag">Protect your paycheck</div>
+        <ul class="tight">
+          <li>More likely to use than life insurance.</li>
+          <li>Check employer first; consider LTD if affordable.</li>
+          <li>Covers part of income if illness/injury stops work.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Umbrella Insurance</h3>
+        <div class="pill-tag">Extra liability protection</div>
+        <ul class="tight">
+          <li>Adds $1M+ coverage above auto/home for low monthly cost.</li>
+          <li>Useful once clients own a home, have savings, or teen drivers.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator">
+      <h2>Understanding Your Costs Calculator</h2>
+      <p>
+        Quick estimate of how one claim might break down. This is a simple model:
+        one covered claim, no copays or coinsurance, and coverage after the deductible.
+      </p>
+
+      <div class="calc-inputs">
+        <label>
+          Monthly Premium ($)
+          <input type="number" id="monthlyPremium" value="150" min="0">
+        </label>
+        <label>
+          Deductible ($)
+          <input type="number" id="deductible" value="1000" min="0">
+        </label>
+        <label>
+          Claim Amount ($)
+          <input type="number" id="claimAmount" value="3000" min="0">
+        </label>
+        <button id="calcBtn" type="button">Calculate</button>
+      </div>
+
+      <div class="calc-results">
+        <div class="box box-premium">
+          <div>Annual Premium Cost</div>
+          <strong id="annualPremium">$1,800</strong>
+        </div>
+        <div class="box box-youpay">
+          <div>You Pay Toward Claim (Deductible)</div>
+          <strong id="youPay">$1,000</strong>
+        </div>
+        <div class="box box-insurance">
+          <div>Insurance Pays Toward Claim</div>
+          <strong id="insurancePays">$2,000</strong>
+        </div>
+        <div class="box box-total">
+          <div>Your Total Cost This Year*</div>
+          <strong id="totalCost">$2,800</strong>
+        </div>
+      </div>
+
+      <div class="calc-note">
+        *Total cost = annual premiums + the part of the claim you pay (up to your deductible).
+        Real plans may also include copays, coinsurance, networks, and uncovered services.
+      </div>
+    </section>
+
+    <!-- Links / next steps -->
+    <div class="links">
+      <!-- Replace hrefs with real links when ready -->
+      <a href="#">Download full Insurance Basics guide (PDF)</a>
+      <a href="#">Find local free/low-cost insurance help</a>
+      <a href="#">Checklist: Are you covered where it matters?</a>
+    </div>
+
+    <footer>
+      <div>
+        Educational resource from Copper Shores Bridges. Not legal, tax, or individual insurance advice.
+        Clients should confirm final decisions with a licensed insurance professional.
+      </div>
+      <div>
+        Built to be inherited: edit this page on GitHub & keep it up to date.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function formatMoney(x) {
+      return "$" + x.toLocaleString(undefined, {
+        maximumFractionDigits: 0
+      });
+    }
+
+    function calculateCosts() {
+      const monthly = parseFloat(document.getElementById("monthlyPremium").value) || 0;
+      const ded = parseFloat(document.getElementById("deductible").value) || 0;
+      const claim = parseFloat(document.getElementById("claimAmount").value) || 0;
+
+      const annualPremium = monthly * 12;
+      const youPayDeductible = Math.min(ded, claim);
+      const insurancePays = Math.max(claim - youPayDeductible, 0);
+      const totalCost = annualPremium + youPayDeductible;
+
+      document.getElementById("annualPremium").textContent = formatMoney(annualPremium);
+      document.getElementById("youPay").textContent = formatMoney(youPayDeductible);
+      document.getElementById("insurancePays").textContent = formatMoney(insurancePays);
+      document.getElementById("totalCost").textContent = formatMoney(totalCost);
+    }
+
+    document.getElementById("calcBtn").addEventListener("click", calculateCosts);
+    calculateCosts();
+  </script>
+</body>
+</html>
