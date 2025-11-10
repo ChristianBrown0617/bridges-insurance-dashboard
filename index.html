@@ -701,18 +701,77 @@
     </div>
 
     <!-- Budget / Cost Estimator (simple version placeholder text) -->
-    <div class="card">
-      <div class="pill-label">Monthly Insurance Budget Estimator</div>
-      <p class="lead">
-        Use this to start a conversation about what a reasonable monthly insurance budget might look like.
-        (You can extend this later with more detailed rules if you’d like.)
-      </p>
-      <p style="font-size:11px;color:var(--slate-500);">
-        Example guidance: prioritize health + auto + basic renters/home first, then layer in term life and
-        disability if dependents rely on income.
-      </p>
+<div class="card">
+  <div class="pill-label">Monthly Insurance Budget Estimator</div>
+  <p class="lead">
+    Get a rough idea of what a reasonable monthly insurance budget might look like for this household.
+    This is an educational guide, not a quote.
+  </p>
+
+  <div class="budget-inputs">
+    <label>
+      Monthly Income ($)
+      <input type="number" id="budgetIncome" value="5000" min="0">
+    </label>
+
+    <label>
+      Family Size
+      <select id="budgetFamily">
+        <option value="single">Single adult</option>
+        <option value="couple">Couple</option>
+        <option value="family">Family with kids</option>
+      </select>
+    </label>
+
+    <label>
+      Home Status
+      <select id="budgetHome">
+        <option value="renter">Renter</option>
+        <option value="homeowner">Homeowner</option>
+      </select>
+    </label>
+
+    <label>
+      Age Range (primary adult)
+      <select id="budgetAge">
+        <option value="18-29">18–29</option>
+        <option value="30-44">30–44</option>
+        <option value="45-64">45–64</option>
+        <option value="65+">65+</option>
+      </select>
+    </label>
+
+    <button class="btn-primary" type="button" id="budgetBtn">
+      Calculate Estimate
+    </button>
+  </div>
+
+  <div class="budget-results" id="budgetResults">
+    <div class="budget-summary">
+      Suggested monthly insurance budget:
+      <strong id="budgetRange">$200 – $400</strong>
     </div>
-  </section>
+
+    <div class="budget-breakdown">
+      <div><span>Health coverage*</span> <strong id="bHealth">$120</strong></div>
+      <div><span>Auto insurance</span> <strong id="bAuto">$60</strong></div>
+      <div><span>Home/Renters</span> <strong id="bHome">$40</strong></div>
+      <div><span>Term life (if needed)</span> <strong id="bLife">$40</strong></div>
+      <div><span>Disability income</span> <strong id="bDisability">$30</strong></div>
+      <div><span>Other / buffer</span> <strong id="bOther">$10</strong></div>
+    </div>
+
+    <p class="calc-note">
+      These ranges are based on age, family size, and housing situation:
+      generally <strong>about 4–15% of take-home income</strong> for core protections.
+      They assume at least one car in the household and adjust emphasis by age
+      (more life insurance in parenting years, more health focus later, etc.).
+      Always compare real quotes and programs (Medicaid, ACA subsidies, employer plans).
+    </p>
+  </div>
+</div>
+</section>
+
 
   <!-- ============ KEY TERMS ============ -->
   <section class="tab-section" id="tab-keyterms">
@@ -1282,3 +1341,4 @@
 </script>
 </body>
 </html>
+
