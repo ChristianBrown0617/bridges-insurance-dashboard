@@ -225,38 +225,45 @@
     }
 
     /* Key statistics strip */
-    .stats-strip {
-      margin-top: 8px;
-      padding: 12px 14px;
-      border-radius: var(--radius-xl);
-      background: #eff4ff;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 16px;
-      align-items: center;
-      font-size: 11px;
-    }
+/* Key statistics strip */
+.stats-strip {
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: var(--radius-xl);
+  background: #eff4ff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 18px;
+  font-size: 11px;
+}
 
-    .stats-title {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 600;
-      color: var(--blue-main);
-    }
+.stats-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--blue-main);
+  margin-right: 10px;
+}
 
-    .stats-title span.icon {
-      width: 16px;
-      height: 16px;
-      background: var(--blue-main);
-      border-radius: 6px;
-    }
+.stats-title span.icon {
+  width: 16px;
+  height: 16px;
+  background: var(--blue-main);
+  border-radius: 6px;
+}
 
-    .stat-item strong {
-      font-size: 20px;
-      color: var(--blue-main);
-      display: block;
-    }
+.stat-item {
+  max-width: 220px;
+}
+
+.stat-item strong {
+  font-size: 18px;
+  color: var(--blue-main);
+  display: block;
+}
+
 
     /* Key Terms grid */
     .grid-2 {
@@ -1475,3 +1482,4 @@
 </script>
 </body>
 </html>
+
