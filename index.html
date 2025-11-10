@@ -5,7 +5,7 @@
   <title>Complete Insurance Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-        content="Complete Insurance Dashboard: simple, plain-language guide to key insurance coverages, costs, and an action plan. Built for Copper Shores Bridges clients and partners." />
+        content="Complete Insurance Dashboard: simple, plain-language guide to key insurance coverages, costs, and an action plan. Built for coaching conversations." />
   <style>
     :root {
       --blue-main: #2563eb;
@@ -134,7 +134,7 @@
     }
 
     .progress-fill {
-      width: 14%;
+      width: 10%;
       height: 100%;
       background: var(--blue-main);
       border-radius: var(--radius-pill);
@@ -185,7 +185,7 @@
     /* Overview specific */
     .overview-flex {
       display: grid;
-      grid-template-columns: 2.1fr 2.1fr 2.1fr;
+      grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 14px;
       margin-top: 10px;
     }
@@ -333,7 +333,7 @@
       margin-top: 2px;
     }
 
-    /* Calculator */
+    /* Calculator (Key Terms tab) */
     .calculator {
       margin-top: 10px;
       padding: 14px 12px 11px;
@@ -418,7 +418,75 @@
       color: var(--slate-500);
     }
 
-    /* Save Money / Umbrella etc re-use topic layout */
+    /* Monthly Insurance Budget Estimator (Overview tab) */
+    .budget-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-end;
+      margin: 10px 0 8px;
+      font-size: 10px;
+    }
+
+    .budget-inputs label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--slate-700);
+    }
+
+    .budget-inputs input[type="number"],
+    .budget-inputs select {
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--slate-300);
+      font-size: 13px;
+      min-width: 150px;
+      background: #f9fafb;
+    }
+
+    .budget-results {
+      margin-top: 4px;
+      font-size: 10px;
+      color: var(--slate-700);
+    }
+
+    .budget-summary {
+      margin-bottom: 6px;
+      font-size: 11px;
+    }
+
+    .budget-summary strong {
+      font-size: 13px;
+      color: var(--blue-main);
+      margin-left: 4px;
+    }
+
+    .budget-breakdown {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px 14px;
+      margin-bottom: 4px;
+    }
+
+    .budget-breakdown div {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 5px 8px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px solid rgba(209, 213, 219, 0.7);
+    }
+
+    .budget-breakdown span {
+      color: var(--slate-500);
+    }
+
+    .budget-breakdown strong {
+      color: var(--slate-900);
+      font-weight: 600;
+    }
 
     /* Action Plan */
     .ap-section-title {
@@ -575,7 +643,8 @@
       .stats-strip,
       .grid-2,
       .topic-layout,
-      .calc-results {
+      .calc-results,
+      .budget-breakdown {
         grid-template-columns: repeat(2, minmax(0,1fr));
       }
     }
@@ -596,7 +665,8 @@
       .stats-strip,
       .grid-2,
       .topic-layout,
-      .calc-results {
+      .calc-results,
+      .budget-breakdown {
         grid-template-columns: 1fr;
       }
       .card {
@@ -607,12 +677,11 @@
 </head>
 <body>
 <div class="page">
-
   <!-- Header -->
   <div class="header-title">
     <h1>Complete Insurance Dashboard</h1>
-    <p>Your complete guide to smart insurance protection — from key terms and core coverages to concrete next steps.</p>
-    <div class="subtitle">Built for coaching conversations. Plain language. No sales pitch.</div>
+    <p>Your guide to smart, affordable protection: key terms, core coverages, and a practical action plan.</p>
+    <div class="subtitle">Built for Bridges-style financial coaching. Plain language. No sales pitch.</div>
   </div>
 
   <!-- Tabs -->
@@ -631,7 +700,7 @@
     </div>
   </div>
 
-  <div class="section-progress-hint">Explore sections to learn more</div>
+  <div class="section-progress-hint">Click through each tab as you walk with a client.</div>
   <div class="progress-track">
     <div class="progress-fill" id="navProgress"></div>
   </div>
@@ -641,34 +710,31 @@
     <div class="card">
       <h2>Insurance Protection Overview</h2>
       <p class="lead">
-        This dashboard highlights the essential protections most families should consider.
-        Use it as a reference to help clients make informed decisions about protecting their finances
-        without overspending.
+        Start with the protections that prevent the biggest financial disasters.
+        Then layer on what fits the household’s goals and budget.
       </p>
 
       <div class="overview-flex">
         <div class="overview-col overview-essential">
           <h3>Essential Coverage</h3>
           <ul>
-            <li><strong>Health Insurance:</strong> Protection from medical debt.</li>
-            <li><strong>Auto Insurance:</strong> Legally required if you drive; shields from liability.</li>
-            <li><strong>Home/Renters:</strong> Protects belongings, home, and liability.</li>
+            <li><strong>Health:</strong> shields from major medical bills.</li>
+            <li><strong>Auto:</strong> required if you drive; protects from lawsuits.</li>
+            <li><strong>Home/Renters:</strong> protects belongings & liability.</li>
           </ul>
         </div>
-
         <div class="overview-col overview-important">
           <h3>Important Coverage</h3>
           <ul>
-            <li><strong>Life Insurance:</strong> Replaces income for dependents.</li>
-            <li><strong>Disability Insurance:</strong> Protects your paycheck if you can't work.</li>
+            <li><strong>Life:</strong> for anyone with dependents.</li>
+            <li><strong>Disability:</strong> protects your paycheck.</li>
           </ul>
         </div>
-
         <div class="overview-col overview-optional">
           <h3>Optional (After Basics)</h3>
           <ul>
-            <li><strong>Umbrella:</strong> Extra liability protection.</li>
-            <li><strong>Flood / specialty:</strong> For specific risks where needed.</li>
+            <li><strong>Umbrella:</strong> extra liability once you have assets.</li>
+            <li>Special coverages (flood, etc.) for specific risks.</li>
           </ul>
         </div>
       </div>
@@ -683,135 +749,129 @@
         </div>
         <div class="stat-item">
           <strong>≈ 2 in 3</strong>
-          bankruptcy filers in one major study said medical issues or bills were a contributing factor.
+          bankruptcy filers in one major study cited medical issues or bills as a factor.
         </div>
         <div class="stat-item">
-          <strong>25%</strong>
+          <strong>≈ 25%</strong>
           of insured workers are projected to face a disability before retirement.
         </div>
         <div class="stat-item">
           <strong>≈ 1 in 2</strong>
-          U.S. adults have life insurance; many are underinsured or rely only on small work policies.
+          adults have life insurance, but many are underinsured.
         </div>
         <div class="stat-item">
-          <strong>45%</strong>
-          of renters have no renters insurance, leaving belongings and liability unprotected.
+          <strong>≈ 45%</strong>
+          of renters lack renters insurance, leaving property and liability exposed.
         </div>
       </div>
     </div>
 
-    <!-- Budget / Cost Estimator (simple version placeholder text) -->
-<div class="card">
-  <div class="pill-label">Monthly Insurance Budget Estimator</div>
-  <p class="lead">
-    Get a rough idea of what a reasonable monthly insurance budget might look like for this household.
-    This is an educational guide, not a quote.
-  </p>
+    <!-- Monthly Insurance Budget Estimator -->
+    <div class="card">
+      <div class="pill-label">Monthly Insurance Budget Estimator</div>
+      <p class="lead">
+        Use this to frame what a reasonable monthly insurance budget might look like.
+        It’s an educational guide, not a quote.
+      </p>
 
-  <div class="budget-inputs">
-    <label>
-      Monthly Income ($)
-      <input type="number" id="budgetIncome" value="5000" min="0">
-    </label>
+      <div class="budget-inputs">
+        <label>
+          Monthly Income ($)
+          <input type="number" id="budgetIncome" value="5000" min="0">
+        </label>
 
-    <label>
-      Family Size
-      <select id="budgetFamily">
-        <option value="single">Single adult</option>
-        <option value="couple">Couple</option>
-        <option value="family">Family with kids</option>
-      </select>
-    </label>
+        <label>
+          Family Size
+          <select id="budgetFamily">
+            <option value="single">Single adult</option>
+            <option value="couple">Couple</option>
+            <option value="family">Family with kids</option>
+          </select>
+        </label>
 
-    <label>
-      Home Status
-      <select id="budgetHome">
-        <option value="renter">Renter</option>
-        <option value="homeowner">Homeowner</option>
-      </select>
-    </label>
+        <label>
+          Home Status
+          <select id="budgetHome">
+            <option value="renter">Renter</option>
+            <option value="homeowner">Homeowner</option>
+          </select>
+        </label>
 
-    <label>
-      Age Range (primary adult)
-      <select id="budgetAge">
-        <option value="18-29">18–29</option>
-        <option value="30-44">30–44</option>
-        <option value="45-64">45–64</option>
-        <option value="65+">65+</option>
-      </select>
-    </label>
+        <label>
+          Age Range (primary adult)
+          <select id="budgetAge">
+            <option value="18-29">18–29</option>
+            <option value="30-44">30–44</option>
+            <option value="45-64">45–64</option>
+            <option value="65+">65+</option>
+          </select>
+        </label>
 
-    <button class="btn-primary" type="button" id="budgetBtn">
-      Calculate Estimate
-    </button>
-  </div>
+        <button class="btn-primary" type="button" id="budgetBtn">
+          Calculate Estimate
+        </button>
+      </div>
 
-  <div class="budget-results" id="budgetResults">
-    <div class="budget-summary">
-      Suggested monthly insurance budget:
-      <strong id="budgetRange">$200 – $400</strong>
+      <div class="budget-results" id="budgetResults">
+        <div class="budget-summary">
+          Suggested monthly insurance budget:
+          <strong id="budgetRange">$200 – $400</strong>
+        </div>
+
+        <div class="budget-breakdown">
+          <div><span>Health coverage*</span> <strong id="bHealth">$120</strong></div>
+          <div><span>Auto insurance</span> <strong id="bAuto">$60</strong></div>
+          <div><span>Home/Renters</span> <strong id="bHome">$40</strong></div>
+          <div><span>Term life (if needed)</span> <strong id="bLife">$40</strong></div>
+          <div><span>Disability income</span> <strong id="bDisability">$30</strong></div>
+          <div><span>Other / buffer</span> <strong id="bOther">$10</strong></div>
+        </div>
+
+        <p class="calc-note">
+          Based on age, family, and housing, this suggests roughly
+          <strong>4–15% of take-home income</strong> for core protections.
+          Adjust using actual quotes, subsidies (Medicaid/ACA), and employer benefits.
+        </p>
+      </div>
     </div>
-
-    <div class="budget-breakdown">
-      <div><span>Health coverage*</span> <strong id="bHealth">$120</strong></div>
-      <div><span>Auto insurance</span> <strong id="bAuto">$60</strong></div>
-      <div><span>Home/Renters</span> <strong id="bHome">$40</strong></div>
-      <div><span>Term life (if needed)</span> <strong id="bLife">$40</strong></div>
-      <div><span>Disability income</span> <strong id="bDisability">$30</strong></div>
-      <div><span>Other / buffer</span> <strong id="bOther">$10</strong></div>
-    </div>
-
-    <p class="calc-note">
-      These ranges are based on age, family size, and housing situation:
-      generally <strong>about 4–15% of take-home income</strong> for core protections.
-      They assume at least one car in the household and adjust emphasis by age
-      (more life insurance in parenting years, more health focus later, etc.).
-      Always compare real quotes and programs (Medicaid, ACA subsidies, employer plans).
-    </p>
-  </div>
-</div>
-</section>
-
+  </section>
 
   <!-- ============ KEY TERMS ============ -->
   <section class="tab-section" id="tab-keyterms">
     <div class="card">
-      <h2>Insurance Basics: Key Terms</h2>
+      <h2>Key Insurance Terms</h2>
       <p class="lead">
-        Understanding these terms makes everything else less confusing. Use the examples to explain trade-offs
-        in real numbers.
+        Understanding these makes every decision easier. Use them with real examples.
       </p>
 
       <div class="grid-2">
         <div class="term-card">
           <h3>Premium</h3>
           The amount you pay (usually monthly) to keep coverage active.
-          You pay this whether or not you file a claim.
-          <div class="term-label">Lower premium → usually higher costs if something happens.</div>
+          <div class="term-label">You pay this whether or not you file a claim.</div>
         </div>
         <div class="term-card">
           <h3>Deductible</h3>
-          The amount you pay out of pocket on a covered claim before insurance pays.
-          <div class="term-label">Example: $1,000 deductible → you pay first $1,000 of a covered loss.</div>
+          What you pay out of pocket on a covered claim before insurance pays.
+          <div class="term-label">Example: $1,000 deductible → you pay first $1,000.</div>
         </div>
         <div class="term-card">
           <h3>Co-pay</h3>
-          A fixed amount you pay for certain services (e.g., $20 doctor visit).
-          Insurance pays the rest.
+          A fixed fee for specific services, like a $20 doctor visit.
         </div>
         <div class="term-card">
           <h3>Coinsurance</h3>
-          You pay a percentage of costs after the deductible; the plan pays the rest.
-          <div class="term-label">Example: 20% coinsurance → you pay 20%, plan pays 80%.</div>
+          After the deductible, you pay a percentage, the plan pays the rest
+          (e.g., 20% you / 80% plan).
         </div>
         <div class="term-card">
           <h3>Out-of-Pocket Maximum</h3>
-          The most you’ll pay in a year for covered services.
-          After you hit this limit, the plan pays 100% of covered costs.
+          The most you'll pay for covered services in a year.
+          After that, the plan pays 100% of covered costs.
         </div>
         <div class="term-card">
           <h3>Claim</h3>
-          A request to your insurer to pay for a covered loss or service.
+          A request for your insurer to pay for a covered loss or service.
         </div>
       </div>
     </div>
@@ -820,8 +880,7 @@
     <div class="calculator">
       <h2>Understanding Your Costs Calculator</h2>
       <p>
-        See how premiums, deductibles, and one covered claim work together.
-        This simple model assumes: one claim, covered service, no copays/coinsurance.
+        One simple scenario: one covered claim, no copays/coinsurance, coverage after the deductible.
       </p>
       <div class="calc-inputs">
         <label>
@@ -857,8 +916,8 @@
         </div>
       </div>
       <div class="calc-note">
-        *Total cost = annual premiums + the part of the claim you pay (up to your deductible).
-        Real plans can include copays, coinsurance, network rules, and uncovered services.
+        *Total = annual premiums + what you pay toward the claim (up to your deductible).
+        Real plans may also include copays, coinsurance, networks, and uncovered services.
       </div>
     </div>
   </section>
@@ -868,27 +927,25 @@
     <div class="card">
       <h2>Health Insurance</h2>
       <p class="lead">
-        Health coverage protects against medical bills that can quickly become unmanageable. For most families,
-        this is the highest priority.
+        Highest priority for most households. Focus on avoiding catastrophic medical debt.
       </p>
       <div class="topic-layout">
         <div class="topic-card">
-          <h3>What It Is & Where to Get It</h3>
+          <h3>Where Coverage Comes From</h3>
           <ul class="tight">
             <li>Employer plans</li>
-            <li>Healthcare.gov / ACA Marketplace (with subsidies for lower incomes)</li>
-            <li>Medicaid / CHIP for qualifying individuals & families</li>
-            <li>Medicare for 65+ or certain disabilities</li>
+            <li>Healthcare.gov / ACA Marketplace</li>
+            <li>Medicaid / CHIP (income-based)</li>
+            <li>Medicare (65+ or certain disabilities)</li>
           </ul>
-          <div class="badge badge-soft-green">Goal: avoid catastrophic medical debt.</div>
+          <div class="badge badge-soft-green">Check for subsidies or Medicaid first.</div>
         </div>
         <div class="topic-card">
-          <h3>Keeping It Affordable</h3>
+          <h3>How to Choose</h3>
           <ul class="tight">
-            <li>Check Medicaid / subsidy eligibility.</li>
-            <li>Compare plans on total cost: premium + deductible + out-of-pocket max.</li>
-            <li>Use in-network providers whenever possible.</li>
-            <li>Higher deductibles can be okay if you have an emergency fund.</li>
+            <li>Compare total cost: premium + deductible + OOP max.</li>
+            <li>Use in-network providers.</li>
+            <li>High deductible can work if you have savings.</li>
           </ul>
         </div>
       </div>
@@ -900,25 +957,25 @@
     <div class="card">
       <h2>Auto Insurance</h2>
       <p class="lead">
-        Required if you drive. Protects you from lawsuits, medical costs, and damage.
+        Required if you drive. Protects you from lawsuits, injuries, and damage.
       </p>
       <div class="topic-layout">
         <div class="topic-card">
-          <h3>Coverage Types</h3>
+          <h3>Key Coverages</h3>
           <ul class="tight">
-            <li><strong>Liability (Required):</strong> Injuries & damage you cause.</li>
-            <li><strong>Collision:</strong> Your car in a crash.</li>
-            <li><strong>Comprehensive:</strong> Theft, fire, weather, etc.</li>
-            <li><strong>Uninsured/Underinsured:</strong> When the other driver has too little or no coverage.</li>
+            <li>Liability (required): injuries & damage you cause.</li>
+            <li>Collision: damage to your car in a crash.</li>
+            <li>Comprehensive: theft, fire, weather, etc.</li>
+            <li>Uninsured/Underinsured: when others lack coverage.</li>
           </ul>
         </div>
         <div class="topic-card">
-          <h3>Making It Affordable</h3>
+          <h3>Keeping It Affordable</h3>
           <ul class="tight">
-            <li>Maintain a clean driving record.</li>
-            <li>Bundle with home/renters for discounts.</li>
-            <li>Raise deductibles if you can handle the risk.</li>
-            <li>Ask about all discounts (safe driver, student, multi-car).</li>
+            <li>Maintain clean driving record.</li>
+            <li>Raise deductibles if you can cover them.</li>
+            <li>Bundle with home/renters.</li>
+            <li>Ask about discounts (safe driver, student).</li>
           </ul>
           <div class="badge badge-soft-blue">Never drive uninsured.</div>
         </div>
@@ -931,27 +988,27 @@
     <div class="card">
       <h2>Homeowners & Renters Insurance</h2>
       <p class="lead">
-        Protects your home or belongings plus liability if someone is hurt on your property.
+        Protects your home or belongings and your liability if someone is hurt on your property.
       </p>
       <div class="topic-layout">
         <div class="topic-card">
           <h3>Homeowners</h3>
           <ul class="tight">
-            <li>Dwelling (structure) coverage at replacement cost.</li>
+            <li>Dwelling at replacement cost.</li>
             <li>Personal property (your stuff).</li>
-            <li>Liability for injuries on your property.</li>
-            <li>Loss of use (hotel, etc. if home uninhabitable).</li>
+            <li>Liability + medical payments.</li>
+            <li>Loss of use if you can’t live there.</li>
           </ul>
-          <div class="badge badge-soft-amber">Often required by mortgage lenders.</div>
+          <div class="badge badge-soft-amber">Often required by lenders.</div>
         </div>
         <div class="topic-card">
           <h3>Renters</h3>
           <ul class="tight">
-            <li>Personal property coverage (furniture, electronics, clothes).</li>
-            <li>Liability if you accidentally damage the unit or someone is hurt.</li>
-            <li>Very low cost (often $10–$20/month).</li>
+            <li>Personal property coverage.</li>
+            <li>Liability protection.</li>
+            <li>Very low cost ($10–$20/month typical).</li>
           </ul>
-          <div class="badge badge-soft-red">Landlord’s policy does NOT cover your stuff.</div>
+          <div class="badge badge-soft-red">Landlord’s policy ≠ your stuff.</div>
         </div>
       </div>
     </div>
@@ -962,26 +1019,24 @@
     <div class="card">
       <h2>Life Insurance</h2>
       <p class="lead">
-        If someone depends on your income, life insurance helps support them if you die.
-        Term life is usually the simplest and most affordable option.
+        For anyone whose income supports others. Term life is usually best value.
       </p>
       <div class="topic-layout">
         <div class="topic-card">
-          <h3>Types & Amount</h3>
+          <h3>Basics</h3>
           <ul class="tight">
-            <li><strong>Term life:</strong> 10–30 years; good for most families.</li>
-            <li>Rule of thumb: ~5–10× annual income (adjust to debts & kids).</li>
-            <li>Many employer policies are small; consider adding your own.</li>
+            <li>Term life 10–30 years fits most needs.</li>
+            <li>Common rule: ~5–10× annual income.</li>
+            <li>Employer coverage alone is often too small.</li>
           </ul>
         </div>
         <div class="topic-card">
-          <h3>Who Needs It</h3>
+          <h3>Who Needs It Most</h3>
           <ul class="tight">
-            <li>Parents with kids or anyone with dependents.</li>
-            <li>Partners who rely on shared income.</li>
-            <li>Less urgent for single adults with no dependents.</li>
+            <li>Parents with kids.</li>
+            <li>Partners relying on shared income.</li>
           </ul>
-          <div class="badge badge-soft-green">Focus on affordability, not fancy add-ons.</div>
+          <div class="badge badge-soft-green">Focus on affordable term, not cash-value extras.</div>
         </div>
       </div>
     </div>
@@ -992,24 +1047,24 @@
     <div class="card">
       <h2>Disability Insurance</h2>
       <p class="lead">
-        Protects your paycheck if an illness or injury stops you from working.
-        Statistically more likely to be used than life insurance.
+        Protects your paycheck if illness or injury stops you from working.
+        Statistically more likely than an early death.
       </p>
       <div class="topic-layout">
         <div class="topic-card">
-          <h3>What It Is</h3>
+          <h3>What It Does</h3>
           <ul class="tight">
-            <li>Short-term and long-term disability (often through employers).</li>
-            <li>Replaces a portion of income (commonly 50–70%).</li>
+            <li>Replaces part of your income (often 50–70%).</li>
+            <li>Short-term and long-term options.</li>
           </ul>
         </div>
         <div class="topic-card">
           <h3>Where to Start</h3>
           <ul class="tight">
-            <li>Check employer benefits first.</li>
-            <li>If not available, explore individual coverage if affordable.</li>
+            <li>Check employer benefits.</li>
+            <li>Explore individual policies if needed & affordable.</li>
           </ul>
-          <div class="badge badge-soft-amber">Key safety net for households living paycheck to paycheck.</div>
+          <div class="badge badge-soft-amber">Key for households living paycheck to paycheck.</div>
         </div>
       </div>
     </div>
@@ -1020,24 +1075,23 @@
     <div class="card">
       <h2>Umbrella Insurance</h2>
       <p class="lead">
-        Extra liability coverage that sits on top of auto and home policies.
-        Often inexpensive; useful once you have assets or higher risk factors.
+        Extra liability coverage above auto & home—cheap way to protect against big lawsuits.
       </p>
       <div class="topic-layout">
         <div class="topic-card">
           <h3>How It Works</h3>
           <ul class="tight">
-            <li>Kicks in after auto/home liability limits are used up.</li>
+            <li>Kicks in after regular policy limits are hit.</li>
             <li>Common starting limit: $1 million.</li>
           </ul>
         </div>
         <div class="topic-card">
-          <h3>Who Should Consider It</h3>
+          <h3>Who Should Consider</h3>
           <ul class="tight">
-            <li>Homeowners and higher earners.</li>
-            <li>Households with teen drivers, pools, rentals, or other risk.</li>
+            <li>Homeowners with savings.</li>
+            <li>Teen drivers, rentals, higher visibility, etc.</li>
           </ul>
-          <div class="badge badge-soft-green">Consider after essentials are in place.</div>
+          <div class="badge badge-soft-green">Add after essentials are in place.</div>
         </div>
       </div>
     </div>
@@ -1046,27 +1100,25 @@
   <!-- ============ SAVE MONEY ============ -->
   <section class="tab-section" id="tab-savemoney">
     <div class="card">
-      <h2>Tips to Save on Insurance Costs</h2>
+      <h2>Ways to Save Without Dangerous Gaps</h2>
       <p class="lead">
-        Help clients lower costs without cutting the protections that matter.
+        Help clients lower premiums while keeping the protections that matter.
       </p>
       <div class="topic-layout">
         <div class="topic-card">
-          <h3>Smart Ways to Save</h3>
+          <h3>Smart Strategies</h3>
           <ul class="tight">
             <li>Bundle auto + home/renters.</li>
-            <li>Increase deductibles (with an emergency fund).</li>
-            <li>Shop quotes periodically, especially at renewal.</li>
-            <li>Ask for discounts (safe driver, student, security systems).</li>
+            <li>Raise deductibles if you have an emergency fund.</li>
+            <li>Ask for all discounts (safe driver, student, devices).</li>
           </ul>
         </div>
         <div class="topic-card">
-          <h3>Other Strategies</h3>
+          <h3>Check Programs</h3>
           <ul class="tight">
-            <li>Use pre-tax accounts (HSA/FSA) for medical costs where allowed.</li>
-            <li>Maintain good credit (where allowed by law).</li>
-            <li>Pay annually instead of monthly if discounts are offered.</li>
-            <li>Review coverage yearly so it fits your current life.</li>
+            <li>Marketplace subsidies.</li>
+            <li>Medicaid / CHIP eligibility.</li>
+            <li>Employer contributions.</li>
           </ul>
         </div>
       </div>
@@ -1081,161 +1133,120 @@
         <span>Complete Insurance Action Plan</span>
       </div>
       <p class="lead">
-        Use this checklist to confirm key protections and avoid common gaps. Check off items as they’re completed.
+        Use this checklist with clients. Check off as steps are completed.
       </p>
 
-      <!-- Essential Coverage -->
+      <!-- Essential -->
       <div class="ap-group">
-        <h3>Essential Coverage (Must-Have)</h3>
+        <h3>Essential Coverage</h3>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Have Health Insurance</strong>
-            <div>Each family member should have basic health coverage (employer, ACA Marketplace, Medicaid/Medicare, etc.).</div>
-            <small>Medical bills are a leading cause of financial stress — don’t skip this step.</small>
+            <strong>Health coverage in place</strong>
+            <small>Through employer, Marketplace, Medicaid/Medicare, etc.</small>
           </div>
         </div>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Carry Auto Insurance (if you drive)</strong>
-            <ul>
-              <li>Keep at least state-required liability at all times; consider higher limits.</li>
-              <li>Decide if collision/comprehensive are needed (newer or valuable vehicles).</li>
-              <li>List all household drivers on the policy.</li>
-            </ul>
-            <small>Never drive uninsured.</small>
+            <strong>Auto insurance active (if they drive)</strong>
+            <small>At least required liability; consider higher limits.</small>
           </div>
         </div>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Protect Your Home or Belongings</strong>
-            <ul>
-              <li>If you own a home: maintain homeowners insurance with dwelling + liability.</li>
-              <li>If you rent: carry renters insurance for belongings + liability.</li>
-            </ul>
-            <small>Don’t assume your landlord’s policy covers your stuff.</small>
+            <strong>Homeowners or renters policy active</strong>
+            <small>Protects belongings and liability; renters not relying on landlord’s policy.</small>
           </div>
         </div>
       </div>
 
-      <!-- Important Coverage -->
+      <!-- Important -->
       <div class="ap-group warning">
-        <h3>Important Coverage (If You Have Dependents)</h3>
+        <h3>Important If Others Rely on Their Income</h3>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Life Insurance for Family’s Breadwinners</strong>
-            <ul>
-              <li>Ensure term life (or similar) is in place if others rely on your income.</li>
-              <li>Consider ~5–10× income; adjust to debts and family needs.</li>
-              <li>Review beneficiaries and coverage as life changes.</li>
-            </ul>
+            <strong>Term life insurance reviewed</strong>
+            <small>Enough coverage for dependents; beneficiaries updated.</small>
           </div>
         </div>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Disability Insurance (Income Protection)</strong>
-            <ul>
-              <li>Check employer benefits for short-/long-term disability.</li>
-              <li>If not offered and affordable, explore individual coverage.</li>
-            </ul>
-            <small>You’re more likely to face a disability than an early death — this is a key safety net.</small>
+            <strong>Disability coverage checked</strong>
+            <small>Employer or individual policy considered.</small>
           </div>
         </div>
       </div>
 
-      <!-- Optional Coverage -->
+      <!-- Optional -->
       <div class="ap-group optional">
-        <h3>Optional Coverage (After Basics)</h3>
+        <h3>Optional (After Essentials)</h3>
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Umbrella Insurance (if appropriate)</strong>
-            <div>
-              Consider if you have savings, a home, teen drivers, or higher lawsuit risk.
-              Often inexpensive for $1M+ extra liability.
-            </div>
+            <strong>Umbrella insurance considered</strong>
+            <small>If they own a home, have savings, or higher liability risk.</small>
           </div>
         </div>
       </div>
 
-      <!-- Financial Preparation -->
+      <!-- Financial Prep -->
       <div class="ap-group finance">
         <h3>Financial Preparation</h3>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Emergency Fund for Deductibles</strong>
-            <div>
-              Aim for at least enough savings to cover health/auto/home deductibles
-              (e.g., $1,000–$2,000+).
-            </div>
+            <strong>Emergency fund started (for deductibles)</strong>
           </div>
         </div>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Use Discounts & Subsidies</strong>
-            <div>
-              Take advantage of available discounts (multi-policy, safe driver, etc.) and
-              any health insurance subsidies or employer contributions.
-            </div>
+            <strong>Using discounts & subsidies</strong>
+            <small>Medicaid/ACA/employer help explored where eligible.</small>
           </div>
         </div>
       </div>
 
-      <!-- Ongoing Management -->
+      <!-- Ongoing -->
       <div class="ap-group ongoing">
-        <h3>Ongoing Management</h3>
+        <h3>Ongoing Habits</h3>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Review Policies Yearly</strong>
-            <div>
-              Check coverage amounts, beneficiaries, and premiums whenever life changes
-              or at renewal.
-            </div>
+            <strong>Policies reviewed yearly</strong>
           </div>
         </div>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Know How to File a Claim</strong>
-            <div>
-              Keep policy numbers and contact info handy; know which number or app to use.
-            </div>
+            <strong>Knows how to file a claim</strong>
           </div>
         </div>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Avoid Lapses</strong>
-            <div>
-              Use reminders or auto-pay so coverage doesn’t accidentally cancel.
-            </div>
+            <strong>Avoids coverage lapses</strong>
           </div>
         </div>
 
         <div class="ap-item">
           <input type="checkbox" class="ap-check">
           <div>
-            <strong>Ask Questions</strong>
-            <div>
-              Encourage clients to ask when they’re unsure. Informed choices beat guessing.
-            </div>
+            <strong>Asks questions when unsure</strong>
           </div>
         </div>
       </div>
@@ -1248,28 +1259,26 @@
           <div class="ap-progress-fill" id="apProgressFill"></div>
         </div>
         <div class="ap-note">
-          Complete each item to build a solid, affordable protection plan.
+          This tool supports coaching conversations. It does not replace licensed advice.
         </div>
       </div>
 
-      <!-- Final Thoughts -->
       <div class="ap-final">
-        <strong>Final Thoughts</strong><br />
-        This checklist is about securing your family’s future and stability while keeping costs manageable.
-        Focus on the essentials first, use discounts and programs available to you, and adjust coverage as life changes.
+        <strong>Big picture:</strong> Cover the major risks first (health, liability, income, dependents),
+        then refine as their situation and budget allow.
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div>Educational tool for coaching conversations. Not legal, tax, or individual insurance advice.</div>
-    <div>Maintained via GitHub so future staff can update content easily.</div>
+    <div>Educational resource. Not legal, tax, or individual insurance advice.</div>
+    <div>Built for easy handoff: edit this single HTML file on GitHub.</div>
   </footer>
 </div>
 
 <script>
-  // Tab switching
+  // === Tab switching + nav progress ===
   const tabButtons = document.querySelectorAll('.tab-btn');
   const sections = document.querySelectorAll('.tab-section');
   const navProgress = document.getElementById('navProgress');
@@ -1282,8 +1291,6 @@
       sec.classList.toggle('active', sec.id === 'tab-' + tab);
     });
 
-    // simple nav progress: fraction of tabs "visited" could be added later;
-    // for now, move fill based on index
     const index = Array.from(tabButtons).findIndex(btn => btn.dataset.tab === tab);
     const pct = ((index + 1) / tabButtons.length) * 100;
     navProgress.style.width = pct + '%';
@@ -1293,7 +1300,7 @@
     btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
   });
 
-  // Calculator logic
+  // === Understanding Your Costs (Key Terms) ===
   function formatMoney(x) {
     return "$" + x.toLocaleString(undefined, { maximumFractionDigits: 0 });
   }
@@ -1320,7 +1327,134 @@
     calculateCosts();
   }
 
-  // Action plan progress
+  // === Monthly Insurance Budget Estimator (Overview) ===
+  function formatMoneyNoDecimals(x) {
+    return "$" + x.toLocaleString(undefined, { maximumFractionDigits: 0 });
+  }
+
+  function getBaseBudgetRange(age, family, home) {
+    let low = 0.05, high = 0.08;
+
+    if (age === "18-29") {
+      if (family === "single") { low = 0.04; high = 0.06; }
+      else if (family === "couple") { low = 0.05; high = 0.07; }
+      else { low = 0.06; high = 0.08; }
+    } else if (age === "30-44") {
+      if (family === "single") { low = 0.05; high = 0.07; }
+      else if (family === "couple") { low = 0.06; high = 0.08; }
+      else { low = 0.07; high = 0.10; }
+    } else if (age === "45-64") {
+      if (family === "single") { low = 0.06; high = 0.08; }
+      else if (family === "couple") { low = 0.07; high = 0.10; }
+      else { low = 0.08; high = 0.12; }
+    } else if (age === "65+") {
+      if (family === "single") { low = 0.08; high = 0.12; }
+      else if (family === "couple") { low = 0.09; high = 0.13; }
+      else { low = 0.10; high = 0.15; }
+    }
+
+    if (home === "homeowner") {
+      low += 0.01;
+      high += 0.01;
+    } else if (home === "renter") {
+      low += 0.005;
+      high += 0.005;
+    }
+
+    low = Math.max(0.03, Math.min(low, 0.15));
+    high = Math.max(low + 0.01, Math.min(high, 0.18));
+
+    return { low, high };
+  }
+
+  function estimateBudget() {
+    const income = parseFloat(document.getElementById("budgetIncome").value) || 0;
+    const family = document.getElementById("budgetFamily").value;
+    const home = document.getElementById("budgetHome").value;
+    const age = document.getElementById("budgetAge").value;
+
+    const rangeEl = document.getElementById("budgetRange");
+    const hEl = document.getElementById("bHealth");
+    const aEl = document.getElementById("bAuto");
+    const homeEl = document.getElementById("bHome");
+    const lifeEl = document.getElementById("bLife");
+    const disEl = document.getElementById("bDisability");
+    const otherEl = document.getElementById("bOther");
+
+    if (!income || income <= 0) {
+      rangeEl.textContent = "Enter income to see an estimate";
+      hEl.textContent = aEl.textContent = homeEl.textContent =
+        lifeEl.textContent = disEl.textContent = otherEl.textContent = "$0";
+      return;
+    }
+
+    const { low, high } = getBaseBudgetRange(age, family, home);
+    const monthlyLow = income * low;
+    const monthlyHigh = income * high;
+    const mid = (monthlyLow + monthlyHigh) / 2;
+
+    rangeEl.textContent =
+      formatMoneyNoDecimals(monthlyLow) + " – " + formatMoneyNoDecimals(monthlyHigh);
+
+    // base weights
+    let wHealth = 0.45;
+    let wAuto = 0.20;
+    let wHome = (home === "homeowner") ? 0.15 : 0.10;
+    let wLife = (family === "family" || family === "couple") ? 0.12 : 0.04;
+    let wDis = 0.06;
+    let wOther = 0.03;
+
+    // adjust by age
+    if (age === "18-29") {
+      wLife *= 0.5;
+      wHealth -= 0.05;
+      wOther += 0.02;
+    } else if (age === "30-44") {
+      if (family === "family" || family === "couple") {
+        wLife += 0.03;
+        wDis += 0.02;
+      }
+    } else if (age === "45-64") {
+      wHealth += 0.03;
+      wLife += 0.02;
+    } else if (age === "65+") {
+      wHealth = 0.55;
+      wLife = 0.02;
+      wDis = 0.05;
+      wAuto -= 0.03;
+    }
+
+    // normalize
+    const totalW = wHealth + wAuto + wHome + wLife + wDis + wOther;
+    wHealth /= totalW;
+    wAuto /= totalW;
+    wHome /= totalW;
+    wLife /= totalW;
+    wDis /= totalW;
+    wOther /= totalW;
+
+    const healthAmt = mid * wHealth;
+    const autoAmt = mid * wAuto;
+    const homeAmt = mid * wHome;
+    const lifeAmt = mid * wLife;
+    const disAmt = mid * wDis;
+    const otherAmt = mid * wOther;
+
+    hEl.textContent = formatMoneyNoDecimals(healthAmt);
+    aEl.textContent = formatMoneyNoDecimals(autoAmt);
+    homeEl.textContent = formatMoneyNoDecimals(homeAmt);
+    lifeEl.textContent = formatMoneyNoDecimals(lifeAmt);
+    disEl.textContent = formatMoneyNoDecimals(disAmt);
+    otherEl.textContent = formatMoneyNoDecimals(otherAmt);
+  }
+
+  const budgetBtn = document.getElementById("budgetBtn");
+  if (budgetBtn) {
+    budgetBtn.addEventListener("click", estimateBudget);
+    estimateBudget();
+  }
+
+  // === Action Plan progress ===
   const apChecks = document.querySelectorAll('.ap-check');
   const apFill = document.getElementById('apProgressFill');
   const apText = document.getElementById('apProgressText');
@@ -1336,9 +1470,8 @@
   apChecks.forEach(c => c.addEventListener('change', updateApProgress));
   updateApProgress();
 
-  // Initialize default tab progress
+  // init default tab
   setActiveTab('overview');
 </script>
 </body>
 </html>
-
