@@ -317,6 +317,36 @@
       border: 1px solid rgba(209, 213, 219, 0.8);
       box-shadow: 0 6px 18px rgba(15,23,42,0.06);
     }
+        /* Colored info boxes (used in Health / Auto) */
+    .box-blue {
+      background: #e0edff;
+      border-radius: 16px;
+      border: 1px solid #bfdbfe;
+      padding: 10px 11px 9px;
+    }
+
+    .box-pink {
+      background: #ffe4e6;
+      border-radius: 16px;
+      border: 1px solid #fecaca;
+      padding: 10px 11px 9px;
+    }
+
+    .box-green {
+      background: #dcfce7;
+      border-radius: 16px;
+      border: 1px solid #bbf7d0;
+      padding: 10px 11px 9px;
+    }
+
+    .box-blue h4,
+    .box-pink h4,
+    .box-green h4 {
+      margin-bottom: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
 
     .topic-card h3 {
       font-size: 13px;
@@ -1021,31 +1051,110 @@
     <div class="card">
       <h2>Auto Insurance</h2>
       <p class="lead">
-        Required if you drive. Protects you from lawsuits, injuries, and damage.
+        Required if you drive. Protects you from lawsuits, injuries, and damage related to your vehicle.
       </p>
+
       <div class="topic-layout">
+        <!-- Left column -->
         <div class="topic-card">
-          <h3>Key Coverages</h3>
-          <ul class="tight">
-            <li>Liability (required): injuries & damage you cause.</li>
-            <li>Collision: damage to your car in a crash.</li>
-            <li>Comprehensive: theft, fire, weather, etc.</li>
-            <li>Uninsured/Underinsured: when others lack coverage.</li>
-          </ul>
+          <div class="box-blue">
+            <h4>What It Is</h4>
+            <p>
+              Auto insurance covers financial losses related to your vehicle.
+              This includes damage to your car from accidents or theft, damage you might
+              cause to others, and medical costs for injuries from a crash.
+              It is required by law in almost every state.
+            </p>
+
+            <h4>Coverage Types</h4>
+            <ul class="tight">
+              <li>
+                <strong>Liability (Required):</strong>
+                Pays for injuries or damage you cause to others. Crucial protection from lawsuits.
+              </li>
+              <li>
+                <strong>Collision (Optional):</strong>
+                Pays to repair your car if you crash, regardless of fault.
+              </li>
+              <li>
+                <strong>Comprehensive (Optional):</strong>
+                Covers theft, vandalism, weather damage, hitting deer, etc.
+              </li>
+              <li>
+                <strong>Uninsured Motorist:</strong>
+                Protects you from drivers without insurance or with too little coverage.
+              </li>
+            </ul>
+          </div>
+
+          <div class="box-pink" style="margin-top:8px;">
+            <h4>Why It Matters</h4>
+            <ul class="tight">
+              <li>Minor fender-bender: a few thousand dollars.</li>
+              <li>Serious accident with injuries: around $150,000 on average.</li>
+              <li>Fatal crash: about $1.78 million average economic cost.</li>
+              <li>Without insurance: you are personally liable for all of these costs.</li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Right column -->
         <div class="topic-card">
-          <h3>Keeping It Affordable</h3>
-          <ul class="tight">
-            <li>Maintain clean driving record.</li>
-            <li>Raise deductibles if you can cover them.</li>
-            <li>Bundle with home/renters.</li>
-            <li>Ask about discounts (safe driver, student).</li>
-          </ul>
-          <div class="badge badge-soft-blue">Never drive uninsured.</div>
+          <div class="box-green">
+            <h4>Money-Saving Strategies</h4>
+            <ul class="tight">
+              <li><strong>Shop around:</strong> Compare quotes online from multiple insurers.</li>
+              <li><strong>Maintain a clean driving record:</strong> Avoid tickets and accidents.</li>
+              <li>
+                <strong>Bundle policies:</strong>
+                Combine auto with home/renters for potential 10–15% savings.
+              </li>
+              <li>
+                <strong>Raise deductibles:</strong>
+                $500–$1,000 is often a sweet spot for savings if you can afford it.
+              </li>
+              <li>
+                <strong>Drop unnecessary coverage:</strong>
+                Consider skipping collision/comprehensive on older, low-value cars.
+              </li>
+              <li>
+                <strong>Ask about all discounts:</strong>
+                Safe driver, good student, multi-car, low-mileage, etc.
+              </li>
+              <li>
+                <strong>Improve your credit score:</strong>
+                In many states, better credit can mean lower rates.
+              </li>
+            </ul>
+          </div>
+
+          <div class="box-blue" style="margin-top:8px;">
+            <h4>Recommended Coverage Limits</h4>
+            <p>State minimums are often dangerously low. Consider these safer minimums:</p>
+            <ul class="tight">
+              <li>
+                <strong>50/100/50:</strong>
+                $50k per person, $100k per accident, $50k property damage.
+              </li>
+              <li>
+                <strong>100/300/100:</strong>
+                Better protection for higher-income families.
+              </li>
+              <li>
+                <strong>Uninsured Motorist:</strong>
+                Match your liability limits when possible.
+              </li>
+              <li>
+                <strong>Never skimp on liability:</strong>
+                It protects your assets from lawsuits.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
 
   <!-- ============ HOME / RENTERS ============ -->
   <section class="tab-section" id="tab-home">
@@ -1539,6 +1648,7 @@
 </script>
 </body>
 </html>
+
 
 
 
